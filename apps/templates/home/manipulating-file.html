@@ -19,11 +19,68 @@
  <script type = "text/javascript"  src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
  <script type = "text/javascript"  src="https://cdn.datatables.net/plug-ins/1.10.15/dataRender/datetime.js"></script>
 <body>
+  <style>
+    .dataframe {
+      background-color: rgba(0,0,0,.075);
+      border: 1px solid #dee2e6;
+      width: 100%;
+      margin-bottom: 1rem;
+      color: #212529;
+      border-collapse: collapse;
+      display: table;
+      box-sizing: border-box;
+      text-indent: initial;
+      white-space: normal;
+      line-height: normal;
+      font-weight: normal;
+      font-size: medium;
+      font-style: normal;
+      text-align: start;
+      border-color: grey;
+      font-variant: normal;
+    }
+    select{
+      display: inline-block;
+      height: calc(1.5em + 0.75rem + 2px);
+      padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #495057;
+      vertical-align: middle;
+      background-color: #fff;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+    input{
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      transition: border-color .15s ease-in-out,box-shadow .15s
+      }
+  </style>
     <div class="card">
       <div class="card-body">
+        
         <form method="post" action="/upload-file" enctype="multipart/form-data">
-          <input type="file" name="file" >
-          <button type="submit" class="btn btn-success mt-2">upload</button>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button class="input-group-text"  type="submit" class="btn btn-success mt-2"  id="inputGroupFileAddon01">Upload</button>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" name="file"  id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+              <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+            </div>
+          </div>
         </form>
         <div class="mt-4">
           {% if request.method == 'POST'%}

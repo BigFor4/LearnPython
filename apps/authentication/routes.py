@@ -205,11 +205,9 @@ def chart():
     global header
     global data
     global option
-    file_name="/csv/analyze.csv"
-    with open(file_name,"r") as line:
-        dataset = Dataset()
-        dataset.csv = line.read()
-    data = dataset.html
+    file_name="E:/python/LearnPython/csv/analyze.csv"
+    data = pd.read_csv(file_name)
+    print(data.to_html())
     option = ["mean","sum","max","min","count","median","std","var"]
     header = open(file_name).readline().rstrip()
     print(header)
@@ -222,7 +220,7 @@ def chart():
     else:
         flask("that header of file not support split")
         return redirect("/")
-    return render_template("/charts/show.html",lines=data,option=option,header=header)
+    return render_template("/charts/show.html",lines=data.to_html(),option=option,header=header)
 
 @blueprint.route('/analyze')
 def analyze():
